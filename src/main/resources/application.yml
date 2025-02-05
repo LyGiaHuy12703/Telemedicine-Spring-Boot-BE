@@ -1,0 +1,55 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 88686797154-3lflf3609nbbe04lukp4rddiljs49s56.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-name: Google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://localhost:3306/telemedicine?createDatabaseIfNotExist=true}
+    password: ${DATABASE_PASSWORD:root}
+    username: ${DATABASE_USERNAME:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: javaforfun127@gmail.com
+    password: wsva xyvh wrlf ihcg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+cloudinary:
+  cloud-name: dkcn9vpuy
+  api-key: dkcn9vpuy
+  secret-key: OB7tNZdLb222OCnGCbcz2-nkess
+jwt:
+  accessToken: "oGuan+rlGCKCbL7pNKWTXd105C0QN0EOxs4zntzEPtCg3ZQPq9ivt1dm9COrDXPY"
+  expiryTime: 3600000 #Thời gian hết hạn của token theo giây
+  refreshToken: "TmaYX9O/HJjGlI7CKMLGnYv8lFfAkaaRW6mb90AWRNYAUyz4sEI0cUSfVTLrromU"
+  expiryTimeRefreshToken: 36000000000 #Thời gian hết hạn refresh
